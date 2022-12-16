@@ -1,0 +1,25 @@
+---
+name: HA Trassir
+version: dev
+slug: ha-trassir
+description: View trassir cameras in Home Assistant
+url: https://github.com/alexmorbo/ha-trassir
+webui: "http://[HOST]:[PORT:19230]"
+startup: system
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+homeassistant_api: true
+hassio_api: true
+ingress: true
+ingress_port: 19230
+ports:
+  19230/tcp: 19230
+ports_description:
+  19230/tcp: Trassir web interface
+schema:
+  log_level: list(trace|debug|info|notice|warning|error|fatal)?
