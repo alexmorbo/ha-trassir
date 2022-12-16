@@ -8,11 +8,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Setup base
 # hadolint ignore=DL3003
-RUN mkdir /app
 
-COPY ./alexmorbo/trassir-client /app
-
-RUN ls -la /app
+COPY ./alexmorbo/trassir-client /var/www/ha-trassir
 
 RUN apk add --no-cache \
         nginx \
@@ -47,10 +44,6 @@ RUN apk add --no-cache \
            --version=2.4.4 \
     && chmod +x /usr/bin/composer \
     \
-    && cd /var/www # && wget -r -l 0 -nH -X "/mrb/trassir-client/.git,/mrb/trassir-client/vendor,/mrb/trassir-client/var/*" ftp://one:one@192.168.64.1/mrb/ \
-    && cp /app /var/www \
-    && ls -la \
-    # && mv ha ha-trassir \
 #    && git clone --branch "master" --depth=1 \
 #        "https://github.com/alexmorbo/trassir-client.git" /var/www/ha-trassir \
 #    \
